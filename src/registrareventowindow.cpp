@@ -1,6 +1,3 @@
-/*widgets usados de registrarEvento.ui: txtTitulo, txtCategoria, dateFecha, timeHoraInicio,
-timeHoraFin, spinCapacidad, btnGuardar, btnCancelar.*/
-
 #include "../include/registrareventowindow.h"
 #include "ui_registrarEvento.h"
 #include "../include/evento.h"
