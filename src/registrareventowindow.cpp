@@ -107,10 +107,6 @@ void RegistrarEventoWindow::on_btnGuardar_clicked(){
 	nuevoEvento.inscritos=0;
 	strncpy(nuevoEvento.estado, "Disponible", ESTADO_MAX-1);
 	nuevoEvento.estado[ESTADO_MAX-1]='\0';
-	// CORRECCION: antes se usaba idOrganizadorAsignado fijo en 1.
-	// Ahora se toma el organizador real elegido en cmbOrganizador
-	// (cargarOrganizadoresEnCombo() guarda el idOrganizador real
-	// como "data" oculto de cada opcion via addItem(texto, id)).
 	nuevoEvento.idOrganizador=ui->cmbOrganizador->currentData().toInt();
 
 	int idGenerado=registrarEvento(nuevoEvento);
