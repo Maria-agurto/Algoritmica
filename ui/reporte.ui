@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ReporteWindow</class>
+ <widget class="QDialog" name="ReporteWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>650</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Reportes</string>
+  </property>
+
+  <widget class="QLabel" name="lblTitulo">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>15</y>
+     <width>610</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Reportes del Sistema</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="font">
+    <font>
+     <bold>true</bold>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+  </widget>
+
+  <widget class="QPushButton" name="btnReporteGeneral">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>55</y>
+     <width>190</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Reporte General</string>
+   </property>
+  </widget>
+
+  <widget class="QPushButton" name="btnMayorAsistencia">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>55</y>
+     <width>190</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Evento c/Mayor Asistencia</string>
+   </property>
+  </widget>
+
+  <widget class="QPushButton" name="btnDisponibles">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>55</y>
+     <width>190</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Eventos Disponibles</string>
+   </property>
+  </widget>
+
+  <widget class="QPushButton" name="btnLlenos">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>95</y>
+     <width>190</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Eventos Llenos</string>
+   </property>
+  </widget>
+
+  <widget class="QPushButton" name="btnPorcentajeOcupacion">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>95</y>
+     <width>190</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>% Ocupacion</string>
+   </property>
+  </widget>
+
+  <widget class="QPushButton" name="btnOrdenar">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>95</y>
+     <width>190</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ordenar Eventos...</string>
+   </property>
+  </widget>
+
+  <widget class="QPushButton" name="btnFiltrar">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>135</y>
+     <width>190</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Filtrar Eventos...</string>
+   </property>
+  </widget>
+
+  <widget class="QLabel" name="lblAvisoConsola">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>135</y>
+     <width>390</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>"Ordenar" y "Filtrar" piden datos por consola (terminal).</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #B9770E; font-style: italic;</string>
+   </property>
+  </widget>
+
+  <widget class="QTextEdit" name="txtResultado">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>180</y>
+     <width>610</width>
+     <height>290</height>
+    </rect>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+   <property name="font">
+    <font>
+     <family>Consolas</family>
+    </font>
+   </property>
+  </widget>
+
+  <widget class="QPushButton" name="btnCerrar">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>480</y>
+     <width>110</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cerrar</string>
+   </property>
+  </widget>
+
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
