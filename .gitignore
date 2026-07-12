@@ -1,1 +1,43 @@
+# Carpetas de compilación
+build/
+build-*/
 
+# Archivos generados por Qt Creator
+*.pro.user
+*.pro.user.*
+*.autosave
+
+# Archivos objeto y ejecutables
+*.o
+*.obj
+*.exe
+*.out
+*.app
+
+# Archivos generados por Qt (MOC, UIC y RCC)
+moc_*.cpp
+moc_*.h
+ui_*.h
+qrc_*.cpp
+
+# Archivos temporales
+*.log
+*.tmp
+
+# Archivos de CMake (por si más adelante migran)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Configuración del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Visual Studio Code (opcional)
+.vscode/
+
+# Archivos de Qt Creator
+*.creator
+*.creator.user
+*.creator.user.*
