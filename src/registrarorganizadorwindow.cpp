@@ -1,6 +1,3 @@
-//widgets usados de registrarOrganizador.ui: txtNombre, txtDepartamento,
-//lblMensaje, btnGuardar, btnCancelar.
-
 #include "../include/registrarorganizadorwindow.h"
 #include "ui_registrarOrganizador.h"
 #include "../include/organizador.h"
