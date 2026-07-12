@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/estilos">
+        <file>estilos/estilo.qss</file>
+    </qresource>
+    <qresource prefix="/iconos">
+        <!-- Agregar aqui los iconos de la aplicacion, por ejemplo: -->
+        <!-- <file>iconos/icono_evento.png</file> -->
+        <!-- <file>iconos/icono_inscripcion.png</file> -->
+        <!-- <file>iconos/icono_reporte.png</file> -->
+    </qresource>
+    <qresource prefix="/imagenes">
+        <!-- Agregar aqui las imagenes (por ejemplo el logo del splash): -->
+        <!-- <file>imagenes/logo.png</file> -->
+    </qresource>
+</RCC>
