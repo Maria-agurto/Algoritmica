@@ -13,12 +13,7 @@ static const string AEVENTOS = "data/eventos.dat";
 static const string APARTICIPANTES = "data/participantes.dat";
 static const string AINSCRIPCIONES = "data/inscripciones.dat";
 
-// ---------------------------------------------------------------------
-// Funciones internas de apoyo (uso exclusivo de este archivo, no se
-// exponen en reportes.h porque no forman parte de las 7 funciones del
-// modulo). Se encargan de leer cada archivo .dat y devolver los datos
-// ya convertidos a los structs correspondientes.
-//
+//Funciones internas
 // Formato asumido de cada linea (separado por '|'):
 //   eventos.dat        -> idEvento|titulo|categoria|fecha|horaInicio|horaFin|capacidad|inscritos|estado|organizador
 //   participantes.dat  -> codigo|nombres|apellidos|carrera|facultad
