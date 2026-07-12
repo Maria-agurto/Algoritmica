@@ -12,10 +12,10 @@ using namespace std;
 
 void generarReporteGeneral();
 void eventoMayorAsistencia();
-void eventosDisponibles(); //Lista de eventos con estado Disponible
-void eventosLlenos(); //Lista de eventos con estado Lleno
+void eventosDisponibles();
+void eventosLlenos();
 void porcentajeOcupacion();
 void ordenarEventos();
 void filtrarEventos();
 
-#endif // REPORTES_H
+#endif
