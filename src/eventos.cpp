@@ -40,8 +40,6 @@ bool eliminarEvento(int idEvento){
 	Evento *eventos=leerTodosEventos(cantidad);
 	bool encontrado=false;
 
-	//se arma un arreglo nuevo sin el evento a eliminar, para que el registro
-	//desaparezca por completo del archivo .dat (no solo se marque como Cancelado)
 	Evento *eventosRestantes=(cantidad>0)?new Evento[cantidad]:NULL;
 	int cantidadRestante=0;
 	for(int i=0;i<cantidad;i++){
