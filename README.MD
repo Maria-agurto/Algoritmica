@@ -27,7 +27,6 @@ Universidad Nacional Mayor de San Marcos
 - ui/
 - resources/
 - data/
-- docs/
 
 ## Estado
 
