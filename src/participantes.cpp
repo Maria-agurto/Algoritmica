@@ -6,17 +6,6 @@ namespace fs = std::filesystem;
 
 static const string ARCHIVO_PARTICIPANTES = "data/participantes.dat";
 
-//----------------------------------------------------
-// CORRECCION: a diferencia de archivos.cpp (escribirEvento/
-// escribirOrganizador), este modulo abria el ofstream
-// directamente sin crear antes la carpeta "data/". Si esa
-// carpeta no existia en el directorio de trabajo actual,
-// ofstream fallaba al abrir SIN lanzar excepcion ni avisar,
-// registrarParticipante() devolvia false, y la ventana
-// mostraba un mensaje enganoso ("el codigo ya existe o esta
-// vacio") en vez de la causa real. Se replica aqui el mismo
-// patron que ya usa archivos.cpp.
-//----------------------------------------------------
 static void asegurarDirectorioParticipantes(){
 	fs::path ruta(ARCHIVO_PARTICIPANTES);
 	if(ruta.has_parent_path()) fs::create_directories(ruta.parent_path());
