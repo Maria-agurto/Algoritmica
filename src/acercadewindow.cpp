@@ -1,6 +1,3 @@
-/*widgets usados de acercaDe.ui: lblNombreProyecto, lblDescripcion, lblIntegrantes,
-lblVersion, btnCerrar.*/
-
 #include "../include/acercadewindow.h"
 #include "ui_acercaDe.h"
 
