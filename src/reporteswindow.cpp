@@ -1,15 +1,3 @@
-/*widgets usados de reportes.ui (version real de Adrian): lblTitulo, btnReporteGeneral,
-btnEventoMayorAsistencia, btnEventosDisponibles, btnEventosLlenos, btnPorcentajeOcupacion,
-cmbCriterioOrden, cmbOrdenDireccion, btnOrdenar, cmbCriterioFiltro, txtValorFiltro,
-btnFiltrar, btnLimpiarFiltro, tablaEventos, lblResultadoTexto, txtResultado,
-statusBarReportes.
-
-CORRECCION (integracion): reportes.h/.cpp ya fueron actualizados por Adrian para que
-ordenarEventos(int, bool) y filtrarEventos(int, string) reciban los valores como
-parametro en vez de pedirlos por consola (cin). Este controlador ahora SI toma los
-valores de cmbCriterioOrden/cmbOrdenDireccion y cmbCriterioFiltro/txtValorFiltro y se
-los pasa directamente a las funciones.*/
-
 #include "../include/reporteswindow.h"
 #include "ui_reportes.h"
 #include "../include/reportes.h"
