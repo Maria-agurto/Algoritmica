@@ -25,12 +25,13 @@
 // se realiza en inscripciones.cpp antes de crear el registro,
 // no dentro de este struct.
 //====================================================
+using namespace std;
 struct Inscripcion
 {
     int idInscripcion;
     int idEvento;
-    std::string codigoAlumno;
-    std::string fechaRegistro;
+    string codigoAlumno;
+    string fechaRegistro;
     bool asistencia;
 };
 
