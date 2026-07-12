@@ -20,12 +20,6 @@ namespace fs = std::filesystem;
 //----------------------------------------------------
 static const std::string ARCHIVO_INSCRIPCIONES = "data/inscripciones.dat";
 
-//----------------------------------------------------
-// CORRECCION: igual que en participantes.cpp, este modulo
-// abria el ofstream sin crear antes "data/". Si la carpeta
-// no existia, la escritura fallaba en silencio y
-// inscribirParticipante() devolvia false sin guardar nada.
-//----------------------------------------------------
 static void asegurarDirectorioInscripciones(){
     fs::path ruta(ARCHIVO_INSCRIPCIONES);
     if(ruta.has_parent_path()) fs::create_directories(ruta.parent_path());
