@@ -168,8 +168,8 @@
      <height>25</height>
     </rect>
    </property>
-   <item><property name="text"><string>FISI</string></property></item>
-   <item><property name="text"><string>Ingenieria Electronica</string></property></item>
+   <item><property name="text"><string>Ingenieria de Sistemas e Informatica</string></property></item>
+   <item><property name="text"><string>Ingenieria Electrica y Electronica</string></property></item>
    <item><property name="text"><string>Ingenieria Industrial</string></property></item>
    <item><property name="text"><string>Ciencias Fisicas</string></property></item>
    <item><property name="text"><string>Otra</string></property></item>
