@@ -14,24 +14,16 @@ static const string APARTICIPANTES = "data/participantes.dat";
 static const string AINSCRIPCIONES = "data/inscripciones.dat";
 
 //Funciones internas
-// Formato asumido de cada linea (separado por '|'):
-//   eventos.dat        -> idEvento|titulo|categoria|fecha|horaInicio|horaFin|capacidad|inscritos|estado|organizador
-//   participantes.dat  -> codigo|nombres|apellidos|carrera|facultad
-//   inscripciones.dat  -> idInscripcion|idEvento|codigoAlumno|fechaRegistro|asistencia(0/1)
-// ---------------------------------------------------------------------
-
-// Divide una linea de texto en un vector de campos usando '|' como separador
 static vector<string> dividirLinea(const string &linea, char separador = '|') {
     vector<string> campos;
     stringstream ss(linea);
     string campo;
     while (getline(ss, campo, separador)) {
-        campos.push_back(trim(campo)); // se usa trim() de utilidades.h
+        campos.push_back(trim(campo));
     }
     return campos;
 }
 
-// Carga todos los eventos registrados en eventos.dat
 static vector<Evento> cargarEventos() {
     vector<Evento> eventos;
     ifstream archivo(AEVENTOS);
@@ -46,7 +38,7 @@ static vector<Evento> cargarEventos() {
         if (linea.empty()) continue;
 
         vector<string> campos = dividirLinea(linea);
-        if (campos.size() < 10) continue; // linea corrupta o incompleta, se ignora
+        if (campos.size() < 10) continue; //Para ignorar líneas incompletas
 
         Evento e;
         e.idEvento    = stoi(campos[0]);
@@ -67,7 +59,6 @@ static vector<Evento> cargarEventos() {
     return eventos;
 }
 
-// Carga todos los participantes registrados en participantes.dat
 static vector<Participante> cargarParticipantes() {
     vector<Participante> participantes;
     ifstream archivo(APARTICIPANTES);
@@ -98,7 +89,6 @@ static vector<Participante> cargarParticipantes() {
     return participantes;
 }
 
-// Carga todas las inscripciones registradas en inscripciones.dat
 static vector<Inscripcion> cargarInscripciones() {
     vector<Inscripcion> inscripciones;
     ifstream archivo(AINSCRIPCIONES);
@@ -129,7 +119,6 @@ static vector<Inscripcion> cargarInscripciones() {
     return inscripciones;
 }
 
-// Imprime el encabezado de una tabla de eventos (evita repetir codigo)
 static void imprimirEncabezadoEventos() {
     cout << left
          << setw(5)  << "ID"
@@ -142,7 +131,6 @@ static void imprimirEncabezadoEventos() {
     cout << string(94, '-') << endl;
 }
 
-// Imprime una fila de la tabla de eventos
 static void imprimirFilaEvento(const Evento &e) {
     cout << left
          << setw(5)  << e.idEvento
@@ -154,12 +142,10 @@ static void imprimirFilaEvento(const Evento &e) {
          << setw(12) << e.estado << endl;
 }
 
-// =======================================================================
-// 1. generarReporteGeneral()
-// Genera estadisticas del sistema: total de eventos, participantes,
-// inscripciones y un resumen de eventos agrupados por estado.
-// =======================================================================
-void generarReporteGeneral() {
+//Funciones principales
+//*******************************
+void generarReporteGeneral() { 
+    //Genera total de eventos, participantes, inscripciones y resumen de eventos por estado.
     vector<Evento> eventos = cargarEventos();
     vector<Participante> participantes = cargarParticipantes();
     vector<Inscripcion> inscripciones = cargarInscripciones();
@@ -176,8 +162,6 @@ void generarReporteGeneral() {
         else if (e.estado == "Finalizado") totalFinalizados++;
     }
 
-    // Se usa obtenerFechaActual() de utilidades.h para dejar constancia
-    // de cuando se genero el reporte
     cout << "==================== REPORTE GENERAL DEL SISTEMA ====================" << endl;
     cout << "Fecha del reporte: " << obtenerFechaActual() << endl << endl;
 
@@ -203,11 +187,7 @@ void generarReporteGeneral() {
     cout << "=======================================================================" << endl;
 }
 
-// =======================================================================
-// 2. eventoMayorAsistencia()
-// Recorre todos los eventos y muestra el que tiene mayor numero de
-// inscritos (mayor asistencia registrada).
-// =======================================================================
+//*******************************
 void eventoMayorAsistencia() {
     vector<Evento> eventos = cargarEventos();
 
@@ -230,10 +210,7 @@ void eventoMayorAsistencia() {
     cout << "========================================" << endl;
 }
 
-// =======================================================================
-// 3. eventosDisponibles()
-// Lista todos los eventos cuyo estado es "Disponible".
-// =======================================================================
+//*******************************
 void eventosDisponibles() {
     vector<Evento> eventos = cargarEventos();
 
@@ -253,10 +230,7 @@ void eventosDisponibles() {
     }
 }
 
-// =======================================================================
-// 4. eventosLlenos()
-// Lista todos los eventos cuyo estado es "Lleno".
-// =======================================================================
+//*******************************
 void eventosLlenos() {
     vector<Evento> eventos = cargarEventos();
 
@@ -276,11 +250,7 @@ void eventosLlenos() {
     }
 }
 
-// =======================================================================
-// 5. porcentajeOcupacion()
-// Calcula y muestra el porcentaje de ocupacion (inscritos / capacidad)
-// de cada evento registrado.
-// =======================================================================
+//*******************************
 void porcentajeOcupacion() {
     vector<Evento> eventos = cargarEventos();
 
@@ -305,12 +275,7 @@ void porcentajeOcupacion() {
     }
 }
 
-// =======================================================================
-// 6. ordenarEventos()
-// Ordena la lista de eventos segun el criterio elegido por el usuario
-// (titulo, fecha, capacidad o inscritos) en orden ascendente o
-// descendente, y muestra el resultado.
-// =======================================================================
+//*******************************
 void ordenarEventos() {
     vector<Evento> eventos = cargarEventos();
 
@@ -330,8 +295,6 @@ void ordenarEventos() {
     string opcion;
     getline(cin, opcion);
 
-    // Se reutiliza validarNumero() de validaciones.h para asegurarse de
-    // que el usuario ingreso un numero valido
     if (!validarNumero(opcion)) {
         cout << "Opcion invalida. Debe ingresar un numero." << endl;
         return;
@@ -368,13 +331,7 @@ void ordenarEventos() {
     }
 }
 
-// =======================================================================
-// 7. filtrarEventos()
-// Permite filtrar eventos por categoria, estado o fecha, segun lo que
-// el usuario indique. Reutiliza validaciones.h para verificar que los
-// campos ingresados no esten vacios y utilidades.h para normalizar el
-// texto antes de comparar (comparacion sin distinguir mayusculas).
-// =======================================================================
+//*******************************
 void filtrarEventos() {
     vector<Evento> eventos = cargarEventos();
 
@@ -403,21 +360,17 @@ void filtrarEventos() {
     string valor;
     getline(cin, valor);
 
-    // Se usa validarCampoVacio() de validaciones.h para no procesar
-    // busquedas vacias
     if (!validarCampoVacio(valor)) {
         cout << "El valor de busqueda no puede estar vacio." << endl;
         return;
     }
 
-    // Si el filtro es por fecha, se valida el formato dd/mm/yyyy
     if (criterio == 3 && !validarFecha(valor)) {
         cout << "La fecha ingresada no tiene un formato valido (dd/mm/yyyy)." << endl;
         return;
     }
 
-    // Se normaliza el valor de busqueda a mayusculas para comparar sin
-    // distinguir entre mayusculas y minusculas
+    //Búsqueda no distingue mayúsculas y minúsculas
     string valorNormalizado = convertirMayusculas(trim(valor));
 
     imprimirEncabezadoEventos();
