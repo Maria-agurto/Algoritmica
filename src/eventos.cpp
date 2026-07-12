@@ -39,16 +39,23 @@ bool eliminarEvento(int idEvento){
 	int cantidad=0;
 	Evento *eventos=leerTodosEventos(cantidad);
 	bool encontrado=false;
+
+	//se arma un arreglo nuevo sin el evento a eliminar, para que el registro
+	//desaparezca por completo del archivo .dat (no solo se marque como Cancelado)
+	Evento *eventosRestantes=(cantidad>0)?new Evento[cantidad]:NULL;
+	int cantidadRestante=0;
 	for(int i=0;i<cantidad;i++){
 		if(eventos[i].idEvento==idEvento){
-			strncpy(eventos[i].estado, "Cancelado", ESTADO_MAX-1);
-			eventos[i].estado[ESTADO_MAX-1]='\0';
 			encontrado=true;
-			break;
+			continue;
 		}
+		eventosRestantes[cantidadRestante++]=eventos[i];
 	}
-	if(encontrado) sobreescribirEventos(eventos,cantidad);
+
+	if(encontrado) sobreescribirEventos(eventosRestantes,cantidadRestante);
+
 	delete[] eventos;
+	delete[] eventosRestantes;
 	return encontrado;
 }
 
