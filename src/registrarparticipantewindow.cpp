@@ -1,19 +1,12 @@
-//widgets usados de registrarParticipante.ui: txtCodigo, txtNombres, txtApellidos,
-//cmbCarrera, cmbFacultad, lblMensaje, btnGuardar, btnCancelar.
-
 #include "../include/registrarparticipantewindow.h"
 #include "ui_registrarParticipante.h"
 #include "../include/participante.h"
 #include "../include/participantes.h"
 #include "../include/validaciones.h"
+#include <QInputDialog>
 #include <cctype>
 using namespace std;
 
-//----------------------------------------------------
-// Validadores locales (no existen en validaciones.h,
-// que solo tiene validadores genericos de texto/numero/
-// fecha/hora; no se modifica ese archivo compartido).
-//----------------------------------------------------
 static bool esSoloDigitos(const string &texto){
 	if(texto.empty()) return false;
 	for(char c : texto){
@@ -79,4 +72,32 @@ void RegistrarParticipanteWindow::on_btnGuardar_clicked(){
 
 void RegistrarParticipanteWindow::on_btnCancelar_clicked(){
 	reject();
+}
+
+void RegistrarParticipanteWindow::on_cmbCarrera_currentIndexChanged(int index){
+	if(ui->cmbCarrera->itemText(index)!="Otra") return;
+
+	bool ok=false;
+	QString texto=QInputDialog::getText(this, "Otra carrera",
+		"Escriba el nombre de la carrera:", QLineEdit::Normal, "", &ok).trimmed();
+
+	if(ok && !texto.isEmpty() && texto.length()<=60){
+		ui->cmbCarrera->setItemText(index, texto);
+	}else{
+		ui->cmbCarrera->setCurrentIndex(0);
+	}
+}
+
+void RegistrarParticipanteWindow::on_cmbFacultad_currentIndexChanged(int index){
+	if(ui->cmbFacultad->itemText(index)!="Otra") return;
+
+	bool ok=false;
+	QString texto=QInputDialog::getText(this, "Otra facultad",
+		"Escriba el nombre de la facultad:", QLineEdit::Normal, "", &ok).trimmed();
+
+	if(ok && !texto.isEmpty() && texto.length()<=60){
+		ui->cmbFacultad->setItemText(index, texto);
+	}else{
+		ui->cmbFacultad->setCurrentIndex(0);
+	}
 }
