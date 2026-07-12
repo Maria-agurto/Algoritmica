@@ -28,7 +28,8 @@
 //   false si alguna validación falló (participante o
 //         evento inexistente, sin cupo, ya inscrito, etc.)
 //----------------------------------------------------
-bool inscribirParticipante(const std::string &codigoAlumno, int idEvento);
+using namespace std;
+bool inscribirParticipante(const string &codigoAlumno, int idEvento);
 
 //----------------------------------------------------
 // Anula (elimina) una inscripción existente.
