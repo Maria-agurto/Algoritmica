@@ -19,6 +19,7 @@ private slots:
 	void on_btnBuscar_clicked();
 	void on_btnGuardarCambios_clicked();
 	void on_btnCancelar_clicked();
+	void on_btnCancelarEvento_clicked();
 
 private:
 	Ui::EditarEventoWindow *ui;
