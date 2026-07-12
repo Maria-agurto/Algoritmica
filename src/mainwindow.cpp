@@ -1,7 +1,3 @@
-/*widgets usados de mainwindow.ui: btnRegistrarEvento, btnEditarEvento, btnInscripciones,
-btnReportes, btnAcercaDe, btnSalir.
-*/
-
 #include "../include/mainwindow.h"
 #include "ui_mainwindow.h"
 #include "../include/registrareventowindow.h"
