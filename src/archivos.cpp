@@ -7,7 +7,7 @@ namespace fs = std::filesystem;
 
 bool escribirEvento(Evento evento){
 	fs::path ruta(ARCHIVO_EVENTOS);
-	if(ruta.has_parent_path()) fs::create_directories(ruta.parent_path()); //crea "data/" si no existe en el cwd actual
+	if(ruta.has_parent_path()) fs::create_directories(ruta.parent_path());
 	ofstream archivo(ARCHIVO_EVENTOS, ios::binary|ios::app);
 	if(!archivo){
 		cout<<"\nError: no se pudo abrir "<<ARCHIVO_EVENTOS;
