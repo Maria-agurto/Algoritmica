@@ -13,5 +13,5 @@ struct Participante
     string facultad;
 };
 
-#endif // PARTICIPANTE_H
+#endif 
 
