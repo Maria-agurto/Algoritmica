@@ -20,13 +20,14 @@
 // que solo contengan letras, etc.) se realiza en
 // validaciones.cpp y NO dentro de este struct.
 //====================================================
+using namespace std;
 struct Participante
 {
-    std::string codigo;
-    std::string nombres;
-    std::string apellidos;
-    std::string carrera;
-    std::string facultad;
+    string codigo;
+    string nombres;
+    string apellidos;
+    string carrera;
+    string facultad;
 };
 
 #endif // PARTICIPANTE_H
