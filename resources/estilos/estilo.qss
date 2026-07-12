@@ -1,0 +1,62 @@
+/* Estilo global - Sistema de Gestion de Eventos Academicos
+   Responsable: Diego (Integracion e Interfaz) */
+
+QWidget{
+	background-color: #F5F6FA;
+	font-family: "Segoe UI";
+	font-size: 10pt;
+	color: #2C3E50;
+}
+
+QMainWindow, QDialog{
+	background-color: #F5F6FA;
+}
+
+QPushButton{
+	background-color: #2E86C1;
+	color: #FFFFFF;
+	border: none;
+	border-radius: 6px;
+	padding: 8px 14px;
+	font-weight: bold;
+}
+
+QPushButton:hover{
+	background-color: #2874A6;
+}
+
+QPushButton:pressed{
+	background-color: #1B4F72;
+}
+
+QLineEdit, QSpinBox, QDateEdit, QTimeEdit{
+	background-color: #FFFFFF;
+	border: 1px solid #BDC3C7;
+	border-radius: 4px;
+	padding: 4px;
+}
+
+QLineEdit:focus, QSpinBox:focus, QDateEdit:focus, QTimeEdit:focus{
+	border: 1px solid #2E86C1;
+}
+
+QLabel{
+	color: #2C3E50;
+}
+
+QTableWidget{
+	background-color: #FFFFFF;
+	gridline-color: #D5D8DC;
+	selection-background-color: #AED6F1;
+}
+
+QHeaderView::section{
+	background-color: #2E86C1;
+	color: #FFFFFF;
+	padding: 4px;
+	border: none;
+}
+
+QFrame[frameShape="4"]{
+	color: #BDC3C7;
+}

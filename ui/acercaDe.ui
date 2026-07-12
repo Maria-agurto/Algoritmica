@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AcercaDeWindow</class>
+ <widget class="QDialog" name="AcercaDeWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>420</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Acerca de</string>
+  </property>
+
+  <widget class="QLabel" name="lblNombreProyecto">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>20</y>
+     <width>380</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sistema de Gestion de Eventos Academicos</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="font">
+    <font>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+
+  <widget class="QLabel" name="lblDescripcion">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>65</y>
+     <width>380</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Aplicacion de escritorio desarrollada en C++ y Qt para la gestion de eventos, organizadores, participantes e inscripciones academicas.</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+
+  <widget class="QLabel" name="lblIntegrantes">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>135</y>
+     <width>380</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Integrantes:
+Maria Fernanda - Modulo de Eventos
+Darren - Modulo de Inscripciones
+Adrian - Modulo de Reportes
+Diego - Integracion e Interfaz</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+
+  <widget class="QLabel" name="lblVersion">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>225</y>
+     <width>380</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Version 1.0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+
+  <widget class="QPushButton" name="btnCerrar">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>255</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Cerrar</string>
+   </property>
+  </widget>
+
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
