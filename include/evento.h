@@ -1,7 +1,6 @@
 #ifndef EVENTO_H
 #define EVENTO_H
 
-//char[] en vez de string: permite guardar el struct directo en el .dat sin corromper datos
 const int TITULO_MAX=101;
 const int CATEGORIA_MAX=30;
 const int FECHA_MAX=11;
