@@ -1,6 +1,3 @@
-//widgets usados de registrarParticipante.ui: txtCodigo, txtNombres, txtApellidos,
-//cmbCarrera, cmbFacultad, lblMensaje, btnGuardar, btnCancelar.
-
 #include "../include/registrarparticipantewindow.h"
 #include "ui_registrarParticipante.h"
 #include "../include/participante.h"
