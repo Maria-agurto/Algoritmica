@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>500</width>
+    <height>450</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Sistema de Gestion de Eventos Academicos</string>
+  </property>
+
+  <widget class="QWidget" name="centralwidget">
+
+   <widget class="QLabel" name="lblTitulo">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>25</y>
+      <width>380</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sistema de Gestion de Eventos Academicos</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+   </widget>
+
+   <widget class="QFrame" name="lineaDivisoria">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>65</y>
+      <width>420</width>
+      <height>10</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::HLine</enum>
+    </property>
+   </widget>
+
+   <widget class="QPushButton" name="btnRegistrarEvento">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>100</y>
+      <width>260</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Registrar Evento</string>
+    </property>
+   </widget>
+
+   <widget class="QPushButton" name="btnEditarEvento">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>155</y>
+      <width>260</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Editar Evento</string>
+    </property>
+   </widget>
+
+   <widget class="QPushButton" name="btnInscripciones">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>210</y>
+      <width>260</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Inscripciones</string>
+    </property>
+   </widget>
+
+   <widget class="QPushButton" name="btnReportes">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>265</y>
+      <width>260</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Reportes</string>
+    </property>
+   </widget>
+
+   <widget class="QPushButton" name="btnAcercaDe">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>320</y>
+      <width>260</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Acerca de</string>
+    </property>
+   </widget>
+
+   <widget class="QPushButton" name="btnSalir">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>375</y>
+      <width>260</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Salir</string>
+    </property>
+   </widget>
+
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
