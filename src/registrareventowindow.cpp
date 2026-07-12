@@ -1,8 +1,5 @@
-//widgets usados de registrarEvento.ui: txtTitulo, txtCategoria, dateFecha, timeHoraInicio,
-//timeHoraFin, spinCapacidad, btnGuardar, btnCancelar.
-//OJO: este .ui no tiene un selector de organizador. Se usa idOrganizadorAsignado (por defecto 1).
-//Cuando el equipo agregue un combo/selector de organizador al .ui, reemplazar setIdOrganizador()
-//por la llamada correspondiente antes de mostrar la ventana, o leerlo directamente de un widget nuevo.
+/*widgets usados de registrarEvento.ui: txtTitulo, txtCategoria, dateFecha, timeHoraInicio,
+timeHoraFin, spinCapacidad, btnGuardar, btnCancelar.*/
 
 #include "../include/registrareventowindow.h"
 #include "ui_registrarEvento.h"
