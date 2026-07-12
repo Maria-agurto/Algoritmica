@@ -1,12 +1,3 @@
-/*widgets usados de Inscripcion.ui: lineEditCodigoAlumno, spinBoxIdEvento, botonInscribir,
-botonAnular, botonActualizarAsistencia, tablaInscripciones, labelMensaje.
-
-CORRECCION DE INTEGRACION: inscripciones.h ahora expone listarInscripciones()
-(ver inscripciones.h/.cpp), asi que este controlador ya NO reimplementa su propia
-copia de la lectura binaria de data/inscripciones.dat. Antes, si el formato de
-guardado cambiaba en inscripciones.cpp, esta ventana podia romperse en silencio
-porque nadie actualizaba su copia duplicada del parser.*/
-
 #include "../include/inscripcionwindow.h"
 #include "ui_Inscripcion.h"
 #include "../include/inscripciones.h"
