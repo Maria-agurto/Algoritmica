@@ -13,19 +13,12 @@
 #include "../include/utilidades.h"
 
 //----------------------------------------------------
-// Nombres de los archivos de datos usados por este
-// modulo. Se definen como constantes para evitar
-// "cadenas magicas" repetidas en el codigo.
+// Nombres de los archivos de datos usados por este modulo.
 //----------------------------------------------------
 static const std::string ARCHIVO_INSCRIPCIONES = "data/inscripciones.dat";
 
 //====================================================
 // SECCION: Serializacion binaria de Inscripcion
-//
-// std::string no puede escribirse directamente con
-// fwrite/write porque internamente maneja memoria
-// dinamica. Por eso, cada string se guarda como:
-// [tamano (size_t)][contenido de la cadena]
 //====================================================
 
 static void escribirString(std::ofstream &archivo, const std::string &texto)
@@ -75,9 +68,6 @@ static bool leerInscripcion(std::ifstream &archivo, Inscripcion &insc)
 
 //----------------------------------------------------
 // Verifica si existe un participante con el codigo
-// indicado. CORREGIDO: antes leia participantes.dat a
-// mano; ahora usa participantes.h (modulo nuevo) para
-// no duplicar el formato de lectura en dos lugares.
 //----------------------------------------------------
 static bool participanteExiste(const std::string &codigoAlumno)
 {
@@ -86,24 +76,6 @@ static bool participanteExiste(const std::string &codigoAlumno)
 }
 
 //----------------------------------------------------
-// CORRECCION CRITICA (integracion):
-//
-// La version anterior de este archivo definia su PROPIA
-// struct "EventoLectura" con campos std::string y los
-// leia con el formato de tamano-prefijado (el mismo que
-// usa Inscripcion). Ese formato NO es el que realmente
-// usa eventos.dat: archivos.cpp (Maria) escribe la
-// struct Evento (evento.h) tal cual, en binario fijo,
-// con campos char[] de tamano constante:
-//
-//     archivo.write((char*)&evento, sizeof(Evento));
-//
-// Por eso, la version anterior NUNCA lograba leer un
-// evento real: validarEventoYCupo() siempre devolvia
-// existe=false. Se corrige usando leerTodosEventos() de
-// archivos.h, que es la MISMA funcion que ya usa
-// reporteswindow.cpp (Diego) para leer eventos.dat, y
-// que sabemos que funciona.
 //----------------------------------------------------
 static void validarEventoYCupo(int idEvento, bool &existe, bool &tieneCupo)
 {
@@ -195,12 +167,6 @@ static void guardarTodasLasInscripciones(const std::vector<Inscripcion> &lista)
 }
 
 //----------------------------------------------------
-// CORRECCION: al inscribir con exito, ahora SI se
-// actualiza eventos.dat sumando 1 a "inscritos" (antes
-// no se hacia, por lo que la capacidad nunca se
-// actualizaba y siempre parecia haber cupo infinito).
-// Ademas, si con esta inscripcion se llega al cupo
-// maximo, se cambia el estado a "Lleno" automaticamente.
 //----------------------------------------------------
 static bool incrementarInscritosEvento(int idEvento)
 {
