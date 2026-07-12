@@ -253,6 +253,23 @@
    </property>
   </widget>
 
+  <widget class="QPushButton" name="btnCancelarEvento">
+   <property name="geometry">
+    <rect>
+     <x>195</x>
+     <y>430</y>
+     <width>160</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: #c0392b; color: white; font-weight: bold;</string>
+   </property>
+   <property name="text">
+    <string>Cancelar Evento</string>
+   </property>
+  </widget>
+
  </widget>
  <resources/>
  <connections/>
