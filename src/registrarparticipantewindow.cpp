@@ -10,11 +10,6 @@
 #include <cctype>
 using namespace std;
 
-//----------------------------------------------------
-// Validadores locales (no existen en validaciones.h,
-// que solo tiene validadores genericos de texto/numero/
-// fecha/hora; no se modifica ese archivo compartido).
-//----------------------------------------------------
 static bool esSoloDigitos(const string &texto){
 	if(texto.empty()) return false;
 	for(char c : texto){
@@ -82,13 +77,6 @@ void RegistrarParticipanteWindow::on_btnCancelar_clicked(){
 	reject();
 }
 
-//----------------------------------------------------
-// Al elegir "Otra" en cmbCarrera, pide el nombre real de la
-// carrera y lo pone en el propio combo, reemplazando el
-// texto "Otra" por lo que escribio el usuario. Si cancela o
-// deja el campo vacio, regresa a la primera opcion de la
-// lista para no dejar "Otra" guardado tal cual.
-//----------------------------------------------------
 void RegistrarParticipanteWindow::on_cmbCarrera_currentIndexChanged(int index){
 	if(ui->cmbCarrera->itemText(index)!="Otra") return;
 
@@ -103,10 +91,6 @@ void RegistrarParticipanteWindow::on_cmbCarrera_currentIndexChanged(int index){
 	}
 }
 
-//----------------------------------------------------
-// Mismo comportamiento que on_cmbCarrera_currentIndexChanged
-// pero para cmbFacultad.
-//----------------------------------------------------
 void RegistrarParticipanteWindow::on_cmbFacultad_currentIndexChanged(int index){
 	if(ui->cmbFacultad->itemText(index)!="Otra") return;
 
