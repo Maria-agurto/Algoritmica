@@ -13,4 +13,4 @@ struct Inscripcion
     bool asistencia;
 };
 
-#endif // INSCRIPCION_H
+#endif 
