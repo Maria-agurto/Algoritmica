@@ -13,7 +13,7 @@ class RegistrarEventoWindow : public QDialog{
 public:
 	explicit RegistrarEventoWindow(QWidget *parent=nullptr);
 	~RegistrarEventoWindow();
-	void setIdOrganizador(int idOrganizador); //el .ui no tiene selector de organizador, se asigna desde afuera
+	void setIdOrganizador(int idOrganizador);
 
 private slots:
 	void on_btnGuardar_clicked();
