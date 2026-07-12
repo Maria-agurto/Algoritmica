@@ -1,10 +1,3 @@
-/*widgets usados de editarEvento.ui: txtBuscarID, btnBuscar, txtNuevoTitulo, txtNuevaCategoria,
-dateNuevaFecha, timeNuevaHoraInicio, timeNuevaHoraFin, spinNuevaCapacidad, btnGuardarCambios,
-btnCancelar.
-Flujo: el usuario escribe un ID y presiona Buscar -> se precargan los campos. Luego edita
-y presiona Guardar Cambios. idOrganizador e inscritos del evento original se conservan
-porque este .ui no tiene widgets para modificarlos.*/
-
 #include "../include/editareventowindow.h"
 #include "ui_editarEvento.h"
 #include "../include/eventos.h"
@@ -150,4 +143,39 @@ void EditarEventoWindow::on_btnGuardarCambios_clicked(){
 
 void EditarEventoWindow::on_btnCancelar_clicked(){
 	reject();
+}
+
+void EditarEventoWindow::on_btnCancelarEvento_clicked(){
+	if(idEventoActual==-1){
+		QMessageBox::warning(this,"Sin evento","Primero busque un evento valido por su ID.");
+		return;
+	}
+
+	Evento original=buscarEvento(idEventoActual);
+	if(original.idEvento==-1){
+		QMessageBox::critical(this,"Error","El evento ya no existe.");
+		idEventoActual=-1;
+		return;
+	}
+
+	QMessageBox::StandardButton respuesta=QMessageBox::question(
+		this,
+		"Confirmar cancelacion",
+		"¿Esta seguro que desea cancelar el evento \""+QString(original.titulo)+"\"?\n\n"
+		"El evento sera eliminado permanentemente y ya no se podra editar ni recibir nuevas inscripciones.",
+		QMessageBox::Yes|QMessageBox::No,
+		QMessageBox::No
+	);
+
+	if(respuesta!=QMessageBox::Yes) return;
+
+	bool ok=eliminarEvento(idEventoActual);
+	if(!ok){
+		QMessageBox::critical(this,"Error","No se pudo cancelar el evento.");
+		return;
+	}
+
+	QMessageBox::information(this,"Evento cancelado","El evento ha sido cancelado y eliminado correctamente.");
+	idEventoActual=-1;
+	accept();
 }
