@@ -396,3 +396,141 @@ void filtrarEventos() {
         cout << "No se encontraron eventos que coincidan con el filtro." << endl;
     }
 }
+
+
+//Funciones para Qt
+
+vector<Evento> obtenerTodosLosEventos() {
+    return cargarEventos();
+}
+
+vector<Evento> obtenerEventosDisponiblesData() {
+    vector<Evento> eventos = cargarEventos();
+    vector<Evento> resultado;
+    for (const Evento &e : eventos) {
+        if (e.estado == "Disponible") resultado.push_back(e);
+    }
+    return resultado;
+}
+
+vector<Evento> obtenerEventosLlenosData() {
+    vector<Evento> eventos = cargarEventos();
+    vector<Evento> resultado;
+    for (const Evento &e : eventos) {
+        if (e.estado == "Lleno") resultado.push_back(e);
+    }
+    return resultado;
+}
+
+Evento obtenerEventoMayorAsistenciaData() {
+    vector<Evento> eventos = cargarEventos();
+
+    Evento vacio;
+    vacio.idEvento = -1;
+    vacio.capacidad = 0;
+    vacio.inscritos = 0;
+
+    if (eventos.empty()) return vacio;
+
+    Evento mayor = eventos[0];
+    for (const Evento &e : eventos) {
+        if (e.inscritos > mayor.inscritos) mayor = e;
+    }
+    return mayor;
+}
+
+string obtenerReporteGeneralTexto() {
+    vector<Evento> eventos = cargarEventos();
+    vector<Participante> participantes = cargarParticipantes();
+    vector<Inscripcion> inscripciones = cargarInscripciones();
+
+    int totalDisponibles = 0, totalLlenos = 0, totalFinalizados = 0;
+    int totalCapacidad = 0, totalInscritosSistema = 0;
+
+    for (const Evento &e : eventos) {
+        totalCapacidad += e.capacidad;
+        totalInscritosSistema += e.inscritos;
+
+        if (e.estado == "Disponible") totalDisponibles++;
+        else if (e.estado == "Lleno") totalLlenos++;
+        else if (e.estado == "Finalizado") totalFinalizados++;
+    }
+
+    ostringstream salida;
+    salida << "==================== REPORTE GENERAL DEL SISTEMA ====================\n";
+    salida << "Fecha del reporte: " << obtenerFechaActual() << "\n\n";
+
+    salida << "Total de eventos registrados:        " << eventos.size() << "\n";
+    salida << "  - Disponibles:                     " << totalDisponibles << "\n";
+    salida << "  - Llenos:                          " << totalLlenos << "\n";
+    salida << "  - Finalizados:                     " << totalFinalizados << "\n\n";
+
+    salida << "Total de participantes registrados:  " << participantes.size() << "\n";
+    salida << "Total de inscripciones registradas:  " << inscripciones.size() << "\n\n";
+
+    salida << "Capacidad total ofertada:            " << totalCapacidad << "\n";
+    salida << "Total de cupos ocupados:             " << totalInscritosSistema << "\n";
+
+    if (totalCapacidad > 0) {
+        double ocupacionGlobal = (static_cast<double>(totalInscritosSistema) / totalCapacidad) * 100.0;
+        salida << "Ocupacion global del sistema:        "
+               << fixed << setprecision(2) << ocupacionGlobal << "%\n";
+    }
+
+    salida << "=======================================================================";
+    return salida.str();
+}
+
+vector<pair<Evento, double>> obtenerPorcentajeOcupacionData() {
+    vector<Evento> eventos = cargarEventos();
+    vector<pair<Evento, double>> resultado;
+
+    for (const Evento &e : eventos) {
+        double porcentaje = 0.0;
+        if (e.capacidad > 0) {
+            porcentaje = (static_cast<double>(e.inscritos) / e.capacidad) * 100.0;
+        }
+        resultado.push_back({e, porcentaje});
+    }
+    return resultado;
+}
+
+vector<Evento> obtenerEventosOrdenadosData(int criterio, bool ascendente) {
+    vector<Evento> eventos = cargarEventos();
+
+    sort(eventos.begin(), eventos.end(), [criterio, ascendente](const Evento &a, const Evento &b) {
+        bool resultado;
+        switch (criterio) {
+            case 1: resultado = a.titulo < b.titulo; break;
+            case 2: resultado = a.fecha < b.fecha; break;
+            case 3: resultado = a.capacidad < b.capacidad; break;
+            case 4: resultado = a.inscritos < b.inscritos; break;
+            default: resultado = a.idEvento < b.idEvento; break;
+        }
+        return ascendente ? resultado : !resultado;
+    });
+
+    return eventos;
+}
+
+vector<Evento> obtenerEventosFiltradosData(int criterio, const string &valor) {
+    vector<Evento> eventos = cargarEventos();
+    vector<Evento> resultado;
+
+    if (!validarCampoVacio(valor)) return resultado;
+    if (criterio == 3 && !validarFecha(valor)) return resultado;
+
+    string valorNormalizado = convertirMayusculas(trim(valor));
+
+    for (const Evento &e : eventos) {
+        bool coincide = false;
+        switch (criterio) {
+            case 1: coincide = (convertirMayusculas(e.categoria) == valorNormalizado); break;
+            case 2: coincide = (convertirMayusculas(e.estado) == valorNormalizado); break;
+            case 3: coincide = (e.fecha == valor); break;
+            default: coincide = false; break;
+        }
+        if (coincide) resultado.push_back(e);
+    }
+    return resultado;
+}
