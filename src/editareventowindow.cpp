@@ -1,9 +1,9 @@
-//widgets usados de editarEvento.ui: txtBuscarID, btnBuscar, txtNuevoTitulo, txtNuevaCategoria,
-//dateNuevaFecha, timeNuevaHoraInicio, timeNuevaHoraFin, spinNuevaCapacidad, btnGuardarCambios,
-//btnCancelar.
-//Flujo: el usuario escribe un ID y presiona Buscar -> se precargan los campos. Luego edita
-//y presiona Guardar Cambios. idOrganizador e inscritos del evento original se conservan
-//porque este .ui no tiene widgets para modificarlos.
+/*widgets usados de editarEvento.ui: txtBuscarID, btnBuscar, txtNuevoTitulo, txtNuevaCategoria,
+dateNuevaFecha, timeNuevaHoraInicio, timeNuevaHoraFin, spinNuevaCapacidad, btnGuardarCambios,
+btnCancelar.
+Flujo: el usuario escribe un ID y presiona Buscar -> se precargan los campos. Luego edita
+y presiona Guardar Cambios. idOrganizador e inscritos del evento original se conservan
+porque este .ui no tiene widgets para modificarlos.*/
 
 #include "../include/editareventowindow.h"
 #include "ui_editarEvento.h"
