@@ -30,17 +30,8 @@ private slots:
 private:
 	Ui::ReportesWindow *ui;
 
-	//Ejecuta una funcion de reportes.cpp que imprime con cout,
-	//captura esa salida y la muestra en txtResultado, sin
-	//modificar reportes.cpp/.h.
 	void ejecutarYMostrar(const std::function<void()> &funcionReporte);
 
-	//Llena tablaEventos reutilizando leerTodosEventos() de
-	//archivos.h (Maria), sin duplicar logica de lectura.
-	//Si se le pasa 'eventosOrdenados' no vacio, llena la tabla
-	//con ese orden en vez de releer el archivo (para que la
-	//tabla refleje el mismo orden que ordenarEventos() imprime
-	//en txtResultado, sin tocar reportes.cpp/.h).
 	void cargarTablaEventos(const std::vector<Evento> &eventosOrdenados={});
 };
 
