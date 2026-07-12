@@ -18,4 +18,4 @@ bool actualizarEstado(int idInscripcion, bool nuevaAsistencia);
 
 std::vector<Inscripcion> listarInscripciones();
 
-#endif // INSCRIPCIONES_H
+#endif 
