@@ -30,4 +30,4 @@ Universidad Nacional Mayor de San Marcos
 
 ## Estado
 
-Proyecto en desarrollo.
+Proyecto finalizado.
