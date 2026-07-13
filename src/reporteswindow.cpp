@@ -34,7 +34,7 @@ void ReportesWindow::cargarTablaEventos(const std::vector<Evento> &eventosOrdena
 
 	vector<Evento> lista;
 	if(!eventosOrdenados.empty()){
-		lista=eventosOrdenados; //ya viene ordenada desde on_btnOrdenar_clicked()
+		lista=eventosOrdenados;
 	}else{
 		int cantidad=0;
 		Evento *eventos=leerTodosEventos(cantidad);
@@ -86,20 +86,10 @@ void ReportesWindow::on_btnPorcentajeOcupacion_clicked(){
 }
 
 void ReportesWindow::on_btnOrdenar_clicked(){
-	// CORRECCION: se toman el criterio y la direccion
-	// directamente de los combos, ya no hace falta avisar
-	// que la funcion pide datos por consola.
-	int criterio=ui->cmbCriterioOrden->currentIndex()+1; // 1=Titulo 2=Fecha 3=Capacidad 4=Inscritos
-	bool ascendente=(ui->cmbOrdenDireccion->currentIndex()==0); // 0=Ascendente 1=Descendente
+	int criterio=ui->cmbCriterioOrden->currentIndex()+1; //1Titulo 2Fecha 3Capacidad 4Inscritos
+	bool ascendente=(ui->cmbOrdenDireccion->currentIndex()==0); //0ascendente 1descendente
 
 	ejecutarYMostrar([criterio, ascendente](){ ordenarEventos(criterio, ascendente); });
-
-	// CORRECCION: ordenarEventos() de reportes.cpp solo imprime
-	// el orden por cout (txtResultado), no lo guarda en el .dat.
-	// Para que tablaEventos se vea con el mismo orden que el
-	// texto de arriba, se ordena aqui mismo una copia en memoria
-	// con el mismo criterio, sin tocar reportes.cpp/.h ni el
-	// archivo real en disco.
 	int cantidad=0;
 	Evento *eventosCrudos=leerTodosEventos(cantidad);
 	vector<Evento> eventosOrdenados;
@@ -124,9 +114,7 @@ void ReportesWindow::on_btnOrdenar_clicked(){
 }
 
 void ReportesWindow::on_btnFiltrar_clicked(){
-	// CORRECCION: se toman el criterio y el valor
-	// directamente del combo y del QLineEdit.
-	int criterio=ui->cmbCriterioFiltro->currentIndex()+1; // 1=Categoria 2=Estado 3=Fecha
+	int criterio=ui->cmbCriterioFiltro->currentIndex()+1; //1Categoria 2Estado 3Fecha
 	string valor=ui->txtValorFiltro->text().toStdString();
 
 	ejecutarYMostrar([criterio, valor](){ filtrarEventos(criterio, valor); });
