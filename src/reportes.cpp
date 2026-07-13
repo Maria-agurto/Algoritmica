@@ -13,41 +13,6 @@
 
 using namespace std;
 
-//====================================================
-// CORRECCION CRITICA (integracion):
-//
-// La version anterior de este archivo definia su propio
-// "cargarEventos()"/"cargarParticipantes()" leyendo texto
-// separado por '|' con getline(), y asumia que Evento y
-// Participante tenian campos std::string (e.titulo,
-// e.organizador, etc). Eso NO coincide con:
-//
-//   1) evento.h real: los campos son char[] de tamano
-//      fijo (titulo, categoria, fecha...) y el campo de
-//      responsable se llama idOrganizador (int), no existe
-//      "organizador" como string.
-//   2) archivos.cpp (Maria) escribe eventos.dat en BINARIO
-//      crudo (archivo.write((char*)&evento, sizeof(Evento))),
-//      nunca como texto con '|'.
-//
-// Por estas dos razones el archivo original NO compilaba
-// (asignaciones de string a char[], comparaciones de
-// char[] con "Disponible" via == que siempre son falsas
-// aunque compilen) y aunque compilara jamas hubiera leido
-// un evento real. Se corrige reutilizando las funciones
-// que YA existen y funcionan: leerTodosEventos() de
-// archivos.h y leerTodosParticipantes() del nuevo modulo
-// participantes.h.
-//
-// CORRECCION ADICIONAL (DRY): este archivo tenia su PROPIA
-// tercera copia del parser binario de inscripciones.dat
-// (leerStringR/leerInscripcionR), identica a la de
-// inscripciones.cpp y a la que tenia inscripcionwindow.cpp.
-// Ahora se usa la funcion publica listarInscripciones() de
-// inscripciones.h, que es la unica fuente de verdad para ese
-// formato binario.
-//====================================================
-
 static vector<Evento> cargarEventos() {
 	vector<Evento> eventos;
 	int cantidad=0;
@@ -152,10 +117,6 @@ void eventoMayorAsistencia() {
 	cout << "===== EVENTO CON MAYOR ASISTENCIA =====" << endl;
 	imprimirEncabezadoEventos();
 	imprimirFilaEvento(mayor);
-	// CORRECCION: evento.h no tiene campo "organizador"
-	// (string), tiene "idOrganizador" (int). Se imprime el ID;
-	// si se quiere el nombre hay que cruzarlo con
-	// leerTodosOrganizadores() de archivos.h.
 	cout << "ID Organizador: " << mayor.idOrganizador << endl;
 	cout << "========================================" << endl;
 }
@@ -226,9 +187,6 @@ void porcentajeOcupacion() {
 }
 
 //*******************************
-// CORRECCION: ahora recibe criterio/ascendente como
-// parametros (vienen de cmbCriterioOrden/cmbOrdenDireccion
-// en reporteswindow.cpp) en vez de leerlos con cin.
 void ordenarEventos(int criterio, bool ascendente) {
 	vector<Evento> eventos = cargarEventos();
 
@@ -240,8 +198,6 @@ void ordenarEventos(int criterio, bool ascendente) {
 	sort(eventos.begin(), eventos.end(), [criterio, ascendente](const Evento &a, const Evento &b) {
 		bool resultado;
 		switch (criterio) {
-			// CORRECCION: comparacion de char[] con strcmp,
-			// no con < directo (eso compararia punteros).
 			case 1: resultado = strcmp(a.titulo, b.titulo) < 0; break;
 			case 2: resultado = strcmp(a.fecha, b.fecha) < 0; break;
 			case 3: resultado = a.capacidad < b.capacidad; break;
@@ -259,9 +215,6 @@ void ordenarEventos(int criterio, bool ascendente) {
 }
 
 //*******************************
-// CORRECCION: ahora recibe criterio/valor como parametros
-// (vienen de cmbCriterioFiltro/txtValorFiltro en
-// reporteswindow.cpp) en vez de leerlos con cin.
 void filtrarEventos(int criterio, const string &valor) {
 	vector<Evento> eventos = cargarEventos();
 
