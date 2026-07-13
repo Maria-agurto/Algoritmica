@@ -103,10 +103,6 @@ void generarReporteGeneral() {
 	for (const Evento &e : eventos) {
 		totalCapacidad += e.capacidad;
 		totalInscritosSistema += e.inscritos;
-
-		// CORRECCION: char[] no se compara con == contra un
-		// string literal (compilaria pero compararia punteros,
-		// no contenido). Se usa strcmp.
 		if (strcmp(e.estado, "Disponible") == 0) totalDisponibles++;
 		else if (strcmp(e.estado, "Lleno") == 0) totalLlenos++;
 		else if (strcmp(e.estado, "Finalizado") == 0) totalFinalizados++;
